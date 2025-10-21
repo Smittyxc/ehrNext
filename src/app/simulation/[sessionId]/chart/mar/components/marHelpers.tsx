@@ -91,8 +91,13 @@ export const renderMedCardDetails = (medication: AllMedicationTypes, order: Medi
           <span className="text-nowrap">{medication.route}</span>
           <Separator className="bg-gray-300" orientation="vertical" />
           <span className="text-nowrap">{order.unitsOrdered} {pluralize(order.unitsOrdered, medication.orderableUnit)}</span>
-          <Separator className="bg-gray-300" orientation="vertical" />
-          <span className="text-nowrap">{medication.infusionRate} {medication.infusionRateUnit}</span>
+          {medication.infusionRate && medication.infusionRateUnit &&
+            <>
+              <Separator className="bg-gray-300" orientation="vertical" />
+              <span className="text-nowrap">{medication.infusionRate} {medication.infusionRateUnit}</span>
+            </>
+          }
+          
           <Separator className="bg-gray-300" orientation="vertical" />
           <span className="text-nowrap">{order.frequency}</span>
           <Separator className="bg-gray-300" orientation="vertical"/>
@@ -114,16 +119,18 @@ export const renderMedCardDetails = (medication: AllMedicationTypes, order: Medi
           </div>
         )
       }
+    case "Inhalation": {
       return (
-      <div className="flex gap-2 h-5">
-        <span className="text-nowrap">{medication.route}</span>
-        <Separator className="bg-gray-300" orientation="vertical" />
-        <span className="text-nowrap">{order.unitsOrdered} {pluralize(order.unitsOrdered, medication.orderableUnit)}</span>
-        <Separator className="bg-gray-300" orientation="vertical" />
-        <span className="text-nowrap">{order.frequency}</span>
-        <Separator className="bg-gray-300" orientation="vertical"/>
-        <span className="text-nowrap">{order.indication}</span>
-      </div>
+        <div className="flex gap-2 h-5">
+          <span className="text-nowrap">{medication.route}</span>
+          <Separator className="bg-gray-300" orientation="vertical" />
+          <span className="text-nowrap">{order.unitsOrdered} {pluralize(order.unitsOrdered, medication.orderableUnit)}</span>
+          <Separator className="bg-gray-300" orientation="vertical" />
+          <span className="text-nowrap">{order.frequency}</span>
+          <Separator className="bg-gray-300" orientation="vertical"/>
+          <span className="text-nowrap">{order.indication}</span>
+        </div>
       )
+    }
   }
 }

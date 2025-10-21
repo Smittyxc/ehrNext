@@ -1,9 +1,10 @@
-import { Input } from "@/components/ui/input"
-import MedEntryCard from "./components/medEntryCard"
-import { MedSelect } from "./components/medSelect"
-import { Label } from "@/components/ui/label"
+'use client'
 import { AllMedicationTypes } from "@/app/simulation/[sessionId]/chart/mar/components/marData"
 import { useState } from "react"
+import { Label } from "@/components/ui/label"
+import { OralMedForm } from "./components/oralMedForm"
+import { IvMedForm } from "./components/ivMedForm"
+import { IvFormData, OralFormData } from "@/lib/schemas"
 
 const medTypes = [
   { label: 'Continous IV Fluids', value: 'Continous IV Fluids' },
@@ -13,51 +14,28 @@ const medTypes = [
 ]
 
 
-const renderForm = (medType: string) => {
-  switch (medType) {
-    case 'PO':
-      return (
-        <div>
-          <select name="form">
-            <option value='mg'>mg</option>
-            <option value='g'>g</option>
-            <option value='mcg'>mcg</option>
-          </select>
-        </div>
-      )
-  }
-}
-
 const MedicationEntry = () => {
-  const [formData, setFormData] = useState<Partial<AllMedicationTypes>>({route: 'PO'})
-  const [route, setRoute] = useState('PO')
-  
-  const handleRouteChange = (value: string) => {
-    setRoute(value)
+  const [route, setRoute] = useState('')
+  const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setRoute(event.target.value)
   }
-
-  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const {name, value} = e.target
-    setFormData(prev => ({...prev, [name]: value}))
+  const onCreateMed = (data: IvFormData | OralFormData) => {
+    console.log(data)
   }
 
 
   return (
-    <div className="w-full ">
-      <MedSelect data={medTypes} placeholder="Select med route" label="Routes" value={route} onChange={handleRouteChange}/>
-      <form className="grid grid-cols-4">
-        <div>
-          <Label>Generic Name</Label>
-          <Input   />  
-        </div>
-        <Label>Generic Name</Label>
-        <Input />
-        <Input />
-        <Input />
-        <Input />
-
-      </form>
-      <MedEntryCard />
+    <div className="w-full p-4">
+      <Label htmlFor="route" className='text-sm pb-1'>Route</Label>
+      <select id="route" value={route} onChange={handleSelect} className="border border-gray-200 h-9 rounded-md px-2 shadow-xs  text-xs">
+        <option value="" selected hidden disabled>Select route...</option>
+        <option value="PO">Oral (PO)</option>
+        <option value="IV">Intravenous (IV)</option>
+        <option value="SC">Subcutaneous (SC)</option>
+        <option value="IM">Intramuscular (IM)</option>
+      </select>
+      {route === 'PO' && <OralMedForm onSubmit={onCreateMed} />}
+      {route === 'IV' && <IvMedForm onSubmit={onCreateMed} />}
 
     </div>
   )
