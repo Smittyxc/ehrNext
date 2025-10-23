@@ -18,9 +18,9 @@ export const IvMedForm = ({ onSubmit }: { onSubmit: SubmitHandler<IvFormData> })
       strengthUnit: 'mg',
     },
   });
-
+  
   const isContinuous = methods.watch('isContinuous');
-
+  
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-4 py-4">

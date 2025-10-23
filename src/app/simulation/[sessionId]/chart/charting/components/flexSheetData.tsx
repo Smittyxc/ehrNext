@@ -214,7 +214,6 @@ const vitalsTemplate: tableData[] = [
         field: "Intake",
         componentType: "static",
         rowType: "titleRow",
-        // hideableId: "intakeTitle" // not being used for hiding the row.. Matches with toolName of rows whose values are to be totaled
     },
     {
         id: "intakeCheckbox", 
@@ -233,7 +232,6 @@ const vitalsTemplate: tableData[] = [
         componentType: "input",
         hideable: true,
         hideableId: "Oral",
-        // toolName: "intakeTitle"
     },
     {
         id: "ivIntakeInput", 
@@ -241,7 +239,6 @@ const vitalsTemplate: tableData[] = [
         componentType: "input",
         hideable: true,
         hideableId: "Intravenous",
-        // toolName: "intakeTitle"
 
     },
     {
@@ -250,9 +247,6 @@ const vitalsTemplate: tableData[] = [
         componentType: "input",
         hideable: true,
         hideableId: "Enteral Nutrition",
-        // toolName: "intakeTitle"
-
-
     },
     {
         id: "parenteralNutritionInput", 
@@ -260,16 +254,12 @@ const vitalsTemplate: tableData[] = [
         componentType: "input",
         hideable: true,
         hideableId: "Parenteral Nutrition",
-        // toolName: "intakeTitle"
-
-
     },
     {
         id: "outputTitle",
         field: "Output",
         componentType: "static",
         rowType: "titleRow",
-        // toolName: "intakeTitle"
     },
     {
         id: "outputCheckbox", 

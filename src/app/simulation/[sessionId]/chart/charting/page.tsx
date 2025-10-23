@@ -24,6 +24,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { differenceInMilliseconds, format } from "date-fns";
 import { useFlexSheetData } from "@/hooks/useFlexSheetData";
 import FlexSheetSidebar from "./components/flexSheetSidebar"
+import { getAlertFlag } from "./components/flexSheetHelpers";
 
 const columnHelper = createColumnHelper<tableData>();
 
@@ -316,14 +317,7 @@ export function FlexSheet() {
                             />
                         );
                     } else {
-                        const normalRange = row.original?.normalRange
-                        let alertFlag = false;
-                        if (normalRange && componentType == "input") {
-                            const numericValue = parseFloat(value) 
-                            if(!isNaN(numericValue)) {
-                                alertFlag = numericValue < normalRange.low || numericValue > normalRange.high;
-                            }
-                        };   
+                        let alertFlag = getAlertFlag(row.original, value, componentType);
                         
                         const onBlur = () => {
                             if(value != initialValue) {

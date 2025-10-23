@@ -9,16 +9,15 @@ import { initializeTime, updateSimulationTime } from './components/timeSlice';
 import type { AppDispatch } from '../../../store/store.js'
 import Header from "@/app/simulation/[sessionId]/chart/components/header"
 
-interface ChartLayoutProps {
-  children: React.ReactNode,
-  params: { sessionId: string }
-}
-
+type ChartLayoutProps = {
+  children: React.ReactNode;
+  params: Awaited<LayoutProps<"/simulation/[sessionId]/chart">["params"]>;
+};
 // params is dynamic URL portion
 const ChartLayout = ({ children, params }: ChartLayoutProps) => {
   const dispatch = useDispatch<AppDispatch>();
   // Main component of the entire chart, time is kept here
-  // timer sets the sessionStartTime once and updates the simulation time for components that need it (FlexSheet, Overview Cards, Labs)
+  // Timer sets the sessionStartTime once and updates the simulation time for components that need it (FlexSheet, Overview Cards, Labs)
   // probably better ways of doing this
   useEffect(() => {
     dispatch(initializeTime());
