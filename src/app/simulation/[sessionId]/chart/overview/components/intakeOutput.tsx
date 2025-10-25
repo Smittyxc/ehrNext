@@ -106,7 +106,7 @@ export function IntakeOutput() {
               height={35}
               interval={0}          
             />
-            <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+            <ChartTooltip content={<ChartTooltipContent label={undefined} payload={[]} coordinate={{x:0, y:0}} accessibilityLayer hideLabel active={false} />} />
             <ChartLegend className="text-xs pt-3 text-neutral-700" content={<ChartLegendContent payload={[]} />} />
              <Bar
               dataKey="output"

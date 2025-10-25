@@ -157,7 +157,7 @@ export function AdminSidebar({ ...props }: React.ComponentProps<typeof Sidebar>)
                           <SidebarMenuSubItem key={item.title}>
                             <SidebarMenuSubButton
                               asChild
-                              isActive={location.pathname === item.url}
+                              isActive={pathname === item.url}
                             >
                               <a href={item.url}>{item.title}</a>
                             </SidebarMenuSubButton>
