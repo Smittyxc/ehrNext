@@ -19,6 +19,7 @@ import type { AppDispatch, RootState } from "@/app/store/store";
 // import { useSubmitNewAdministrationsMutation } from "@/app/store/apiSlice";
 import { differenceInMinutes } from "date-fns";
 import { toast } from "sonner";
+import { useSubmitNewAdministrationsMutation } from "@/app/store/apiSlice"
 
 interface MedAdministrationProps {
   selectedMedIds: string[];
@@ -55,7 +56,7 @@ const MedAdministrationPanel = ({
   })
 
 
-  // const [submitNewAdministrations, {isLoading}] = useSubmitNewAdministrationsMutation();
+  const [submitNewAdministrations, {isLoading}] = useSubmitNewAdministrationsMutation();
 
   // sending the new medAdministrationInstance to the backend
   const handleSubmit = async () => {
@@ -154,7 +155,7 @@ const MedAdministrationPanel = ({
           </div>
         </div>
         <DialogFooter className="items-center h-fit">
-          {/* <Button variant="outline" disabled={isLoading || !isScanned} onClick={handleSubmit}>{isLoading ? "Saving..." : "Accept"}</Button> */}
+          <Button variant="outline" disabled={isLoading || !isScanned} onClick={handleSubmit}>{isLoading ? "Saving..." : "Accept"}</Button>
           <DialogClose asChild>
             <Button variant="outline">Cancel</Button>
           </DialogClose>
