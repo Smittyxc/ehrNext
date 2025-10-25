@@ -126,7 +126,7 @@ const MedAdminCard = ({
                 // if no administrations recorded for this medication
                 if (!administration.medicationOrderId) {
                   return (
-                    <p className="text-sm p-2 bg-gray-100 rounded-lg">Never</p>
+                    <p key={index} className="text-sm p-2 bg-gray-100 rounded-lg">Never</p>
                   )
                 }
                 const adminDateTime = new Date(sessionStartTime + administration.adminTimeMinuteOffset * 60 * 1000);
@@ -163,7 +163,7 @@ const MedAdminCard = ({
               </div>
             </div> 
           </div>
-          {medication.route === "IV" &&
+          {medication.route === "IV" && medication.infusionRate &&
             <div className="w-full space-y-1">
               <Label>Rate</Label>
               <p className="text-sm w-fit border px-3 py-2 rounded-lg shadow-xs">

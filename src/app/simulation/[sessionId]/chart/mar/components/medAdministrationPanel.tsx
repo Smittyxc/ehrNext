@@ -5,7 +5,8 @@ import {
   DialogContent,
   DialogTrigger,
   DialogFooter,
-  DialogClose
+  DialogClose,
+  DialogTitle
 } from "@/components/ui/dialog"
 
 import { Button } from "@/components/ui/button"
@@ -75,7 +76,7 @@ const MedAdministrationPanel = ({
     });
 
     try {
-      // await submitNewAdministrations({administrations: payload}).unwrap();    // dummy rtk query updating marSlice administrations array for testing
+      await submitNewAdministrations({administrations: payload}).unwrap();    // dummy rtk query updating marSlice administrations array for testing
       dispatch(clearNewAdminstrations());
       setIsOpen(false);
       dispatch(clearSelectedMedications())
@@ -91,6 +92,7 @@ const MedAdministrationPanel = ({
       open={isOpen}
       onOpenChange={setIsOpen}
     >
+      <DialogTitle></DialogTitle>
       <div className="flex w-full justify-end px-4">
         <DialogTrigger asChild>
           <Button 
