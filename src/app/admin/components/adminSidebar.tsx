@@ -63,7 +63,11 @@ const collapsibleData = {
         },
         {
           title: "Add Medications",
-          url: "/admin/addMeds",
+          url: "/admin/add_meds",
+        },
+        {
+          title: "Add Labs",
+          url: "/admin/add_labs",
         },
         {
           title: "Edit Medications",

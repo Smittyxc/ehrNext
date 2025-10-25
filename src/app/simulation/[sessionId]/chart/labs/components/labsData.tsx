@@ -463,37 +463,31 @@ export const labTemplate: LabDataTemplate[] = [
     field: "Protein",
     unit: "", 
     rowType: "results",
-    // normalRange: { low: "Negative", high: "Negative" } 
   },
   {
     field: "Urine Glucose",
     unit: "", // Often reported as negative/positive
     rowType: "results",
-    // normalRange: { low: "Negative", high: "Negative" }
   },
   {
     field: "Ketones",
     unit: "", // Often reported as negative/positive
     rowType: "results",
-    // normalRange: { low: "Negative", high: "Negative" }
   },
   {
     field: "Leukocyte Esterase",
     unit: "", // Often reported as negative/positive
     rowType: "results",
-    // normalRange: { low: "Negative", high: "Negative" }
   },
   {
     field: "Nitrites",
     unit: "", // Often reported as negative/positive
     rowType: "results",
-    // normalRange: { low: "Negative", high: "Negative" }
   },
   {
     field: "Blood",
     unit: "", // Often reported as negative/positive
     rowType: "results",
-    // normalRange: { low: "Negative", high: "Negative" }
   },
   {
     field: "Coagulation",

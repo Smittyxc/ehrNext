@@ -2,10 +2,12 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Clipboard, NotebookText, Pill, TestTubeDiagonal, User } from "lucide-react";
 import MultiPtSelector from "./multiPtSelector";
 import Link from "next/link";
+import { useParams } from "next/navigation"
 
 
-
-export default function ChartTabs( { sessionId }: {sessionId: string}) {
+export default function ChartTabs() {
+  const params = useParams()
+  const { sessionId } = params
   const tabs = [
     {
       name: "Overview",
